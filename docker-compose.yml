@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  solver:
+    restart: always
+    working_dir: /app
+    container_name: solver
+    build: .
+    env_file:
+      - .env
