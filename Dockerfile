@@ -7,7 +7,7 @@ RUN apk add openjdk11 --repository=http://dl-cdn.alpinelinux.org/alpine/edge/com
     && apk add --no-cache bash \
     && apk add jq curl
 
-COPY .env config.cfg solver.sh ./
+COPY .env config*.cfg solver.sh ./
 
 RUN chmod 777 solver.sh
 
