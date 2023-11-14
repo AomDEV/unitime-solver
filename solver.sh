@@ -7,7 +7,7 @@ TASK_ID=$1
 if [ -z "$TASK_ID" ]; then
     # FETCH TASK_ID FROM API (POST)
     echo "[LOG] Fetching task ID from $API_URL/task/accept"
-    ACCEPTED_TASK=$(curl -s -X POST "$API_URL/task/accept")
+    ACCEPTED_TASK=$(curl -s "$API_URL/task/accept")
     TASK_ID=$(echo $ACCEPTED_TASK | jq -r '.data.id')
 
     if [ -z "$TASK_ID" ]; then
