@@ -1,10 +1,10 @@
 #!/bin/bash
 
-echo ":: CPSolver ::"
-sleep 1
-
 export $(grep -v '^#' .env | xargs)
 TASK_ID=$1
+
+echo ":: CPSolver ::"
+sleep 5
 
 # CHECK `TASK_ID` IS NOT EMPTY
 if [ -z "$TASK_ID" ]; then
