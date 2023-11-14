@@ -19,6 +19,12 @@ if [ -z "$TASK_ID" ]; then
     fi
 fi
 
+# CHECK `TASK_ID` IS NULLABLE
+if [ -z "$TASK_ID" ]; then
+    echo "Error: No task ID provided"
+    exit 1
+fi
+
 # CHECK `TASK_ID` IS NUMERIC
 if ! [[ "$TASK_ID" =~ ^[0-9]+$ ]]; then
     echo "Error: Task ID must be numeric ($TASK_ID)"
