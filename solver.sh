@@ -88,7 +88,7 @@ echo "[LOG] Executing solver"
 
 # RUN SOLVER
 echo "============================================"
-java -Xmx1g -cp cpsolver/cpsolver.jar org.cpsolver.exam.Test config.default.cfg $FILE_PATH ./task/out_$TASK_ID.xml
+java -Xmx1g -cp cpsolver/cpsolver.jar org.cpsolver.exam.Test $CONFIG_FILE $FILE_PATH ./task/out_$TASK_ID.xml
 echo "============================================"
 
 # CLEAN UP
