@@ -99,5 +99,6 @@ rm -rf cpsolver/*
 echo "[LOG] Sending XML to server"
 # Read file and encode to base64
 FILE_CONTENT=$(cat ./task/out_$TASK_ID.xml | base64)
+echo "[LOG] XML file content: $FILE_CONTENT"
 CURL_SENT=$(curl -s -X POST "$API_URL/task/$TASK_ID/complete" -H 'Content-Type: application/json' -d "{\"key\": \"$SECRET_KEY\", \"output\": \"$FILE_CONTENT\"}")
 echo "[LOG] Server response: $CURL_SENT"
