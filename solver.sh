@@ -19,7 +19,11 @@ if [ -z "$TASK_ID" ]; then
     fi
 fi
 
-# CHECK `TASK_ID` IS NULLABLE
+# CHECK `TASK_ID` IS NULLABLE OR EQUALS TO "null"
+if [ "$TASK_ID" = "null" ]; then
+    echo "Error: No task ID provided"
+    exit 1
+fi
 if [ -z "$TASK_ID" ]; then
     echo "Error: No task ID provided"
     exit 1
