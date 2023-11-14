@@ -88,7 +88,7 @@ echo "[LOG] Executing solver"
 
 # RUN SOLVER
 echo "============================================"
-java -Xmx1g -cp cpsolver/cpsolver.jar org.cpsolver.exam.Test config.cfg $FILE_PATH ./task/out_$TASK_ID.xml
+java -Xmx1g -cp cpsolver/cpsolver.jar org.cpsolver.exam.Test config.default.cfg $FILE_PATH ./task/out_$TASK_ID.xml
 echo "============================================"
 
 # CLEAN UP
@@ -100,5 +100,5 @@ echo "[LOG] Sending XML to server"
 # Read file and encode to base64
 FILE_CONTENT=$(cat ./task/out_$TASK_ID.xml | base64)
 echo "[LOG] XML file content: $FILE_CONTENT"
-CURL_SENT=$(curl -s -X POST "$API_URL/task/$TASK_ID/complete" -H 'Content-Type: application/json' -d "{\"key\": \"$SECRET_KEY\", \"output\": \"$FILE_CONTENT\"}")
-echo "[LOG] Server response: $CURL_SENT"
+COMPLETION_CONTENT=$(curl -s -X POST "$API_URL/task/$TASK_ID/complete" -H 'Content-Type: application/json' -d "{\"key\": \"$SECRET_KEY\", \"output\": \"$FILE_CONTENT\"}")
+echo "[LOG] Server response: $COMPLETION_CONTENT"
