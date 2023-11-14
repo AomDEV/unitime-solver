@@ -9,4 +9,6 @@ RUN apk add openjdk11 --repository=http://dl-cdn.alpinelinux.org/alpine/edge/com
 
 COPY .env config.cfg solver.sh ./
 
-RUN sh solver.sh
+RUN cnmod 777 solver.sh
+
+CMD ["/app/solver.sh"]

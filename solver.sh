@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo ":: CPSolver ::"
+sleep 1
+
 export $(grep -v '^#' .env | xargs)
 TASK_ID=$1
 
@@ -30,7 +33,6 @@ fi
 # DELETE ALL FILE IN `task`
 rm -rf task/*
 
-echo ":: CPSolver ::"
 echo "[INFO] Task ID is $TASK_ID"
 echo "[INFO] Version is $BUILD_VERSION"
 
