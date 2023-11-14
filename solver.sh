@@ -10,7 +10,7 @@ if [ -z "$TASK_ID" ]; then
     ACCEPTED_TASK=$(curl -s -X POST "$API_URL/task/accept")
     TASK_ID=$(echo $ACCEPTED_TASK | jq -r '.data.id')
 
-    if [ -z "$my_var" ]; then
+    if [ -z "$TASK_ID" ]; then
         echo "Usage: solver.sh <task_id>"
         exit 1
     fi
