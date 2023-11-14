@@ -99,6 +99,8 @@ rm -rf cpsolver/*
 echo "[LOG] Sending XML to server"
 # Read file and encode to base64
 FILE_CONTENT=$(cat ./task/out_$TASK_ID.xml | base64)
-echo "[LOG] XML file content: $FILE_CONTENT"
-COMPLETION_CONTENT=$(curl -s -X POST "$API_URL/task/$TASK_ID/complete" -H 'Content-Type: application/json' -d "{\"key\": \"$SECRET_KEY\", \"output\": \"$FILE_CONTENT\"}")
+FILE_SIZE=$(wc -c < ./task/out_$TASK_ID.xml)
+echo "[LOG] XML file content size is $FILE_SIZE bytes"
+
+COMPLETION_CONTENT=$(curl -i -s -X POST "$API_URL/task/$TASK_ID/complete" -H 'Content-Type: application/json' -d "{\"key\": \"$SECRET_KEY\", \"output\": \"$FILE_CONTENT\"}")
 echo "[LOG] Server response: $COMPLETION_CONTENT"
