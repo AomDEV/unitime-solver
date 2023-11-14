@@ -18,7 +18,7 @@ fi
 
 # CHECK `TASK_ID` IS NUMERIC
 if ! [[ "$TASK_ID" =~ ^[0-9]+$ ]]; then
-    echo "Error: Task ID must be numeric"
+    echo "Error: Task ID must be numeric ($TASK_ID)"
     exit 1
 fi
 
