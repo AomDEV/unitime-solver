@@ -98,7 +98,7 @@ rm -rf cpsolver/*
 # SEND XML TO API
 echo "[LOG] Sending XML to server"
 # Read file and encode to base64
-FILE_CONTENT=$(cat ./task/out_$TASK_ID.xml | tr -d '\n' | base64)
+FILE_CONTENT=$(cat ./task/out_$TASK_ID.xml | tr -d '\n' | base64 | tr -d '\n')
 FILE_SIZE=$(wc -c < ./task/out_$TASK_ID.xml)
 echo "[LOG] XML file content size is $FILE_SIZE bytes"
 
