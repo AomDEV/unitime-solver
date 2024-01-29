@@ -7,4 +7,8 @@ services:
     build: .
     env_file:
       - .env
-      
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true
