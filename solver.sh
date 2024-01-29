@@ -1,8 +1,6 @@
 #!/bin/bash
-
 export $(grep -v '^#' .env | xargs)
 TASK_ID=$1
-
 echo ":: CPSolver ::"
 sleep 5
 
@@ -104,5 +102,6 @@ echo "[LOG] XML file content size is $FILE_SIZE bytes"
 
 echo "[LOG] Sending XML to server"
 echo "[LOG] Request Body: $FILE_CONTENT"
-COMPLETION_CONTENT=$(curl -i -s -X POST "$API_URL/task/$TASK_ID/complete" -H 'Content-Type: application/json' -d "{\"key\": \"$SECRET_KEY\", \"output\": \"$FILE_CONTENT\"}")
+POST_BODY="{\"key\": \"$SECRET_KEY\", \"output\": \"$FILE_CONTENT\"}"
+COMPLETION_CONTENT=$(curl -i -s -X POST "$API_URL/task/$TASK_ID/complete" -H 'Content-Type: application/json' -d "$POST_BODY")
 echo "[LOG] Server response: $COMPLETION_CONTENT"

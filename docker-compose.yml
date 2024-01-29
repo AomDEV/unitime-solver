@@ -7,3 +7,4 @@ services:
     build: .
     env_file:
       - .env
+      
