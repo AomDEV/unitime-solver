@@ -106,6 +106,6 @@ POST_BODY="{\"key\": \"$SECRET_KEY\", \"output\": \"$FILE_CONTENT\"}"
 # Write `POST_BODY` to `task/body_$TASK_ID.txt`
 BODY_FILE="./task/body_$TASK_ID.txt"
 echo $POST_BODY > $BODY_FILE
-COMPLETION_CONTENT=$(curl -i -s -X POST "$API_URL/task/$TASK_ID/complete" -H 'Content-Type: application/json' -d @$POST_BODY)
+COMPLETION_CONTENT=$(curl -i -s -X POST "$API_URL/task/$TASK_ID/complete" -H 'Content-Type: application/json' -d @$BODY_FILE)
 echo "[LOG] Server response: $COMPLETION_CONTENT"
 rm -rf task/*
