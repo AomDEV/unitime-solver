@@ -103,5 +103,9 @@ echo "[LOG] XML file content size is $FILE_SIZE bytes"
 echo "[LOG] Sending XML to server"
 echo "[LOG] Request Body: $FILE_CONTENT"
 POST_BODY="{\"key\": \"$SECRET_KEY\", \"output\": \"$FILE_CONTENT\"}"
-COMPLETION_CONTENT=$(curl -i -s -X POST "$API_URL/task/$TASK_ID/complete" -H 'Content-Type: application/json' -d "$POST_BODY")
+# Write `POST_BODY` to `task/body_$TASK_ID.txt`
+BODY_FILE="./task/body_$TASK_ID.txt"
+echo $POST_BODY > $BODY_FILE
+COMPLETION_CONTENT=$(curl -i -s -X POST "$API_URL/task/$TASK_ID/complete" -H 'Content-Type: application/json' -d @$POST_BODY)
 echo "[LOG] Server response: $COMPLETION_CONTENT"
+rm -rf task/*
