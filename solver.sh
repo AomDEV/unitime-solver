@@ -53,9 +53,11 @@ if [ ! -d "cpsolver" ]; then
 fi
 
 # DOWNLOAD SOLVER FROM GITHUB
-echo "[LOG] Downloading solver v$BUILD_VERSION"
-SOLVER_URL="https://builds.unitime.org/cpsolver-$BUILD_VERSION.zip"
-curl -s -o cpsolver.zip "$SOLVER_URL"
+if [ ! -f "cpsolver.zip" ]; then
+    echo "[LOG] Downloading solver v$BUILD_VERSION"
+    SOLVER_URL="https://builds.unitime.org/cpsolver-$BUILD_VERSION.zip"
+    curl -s -o cpsolver.zip "$SOLVER_URL"
+fi
 echo "[LOG] Installing solver v$BUILD_VERSION"
 unzip -qq cpsolver.zip -d cpsolver/tmp
 rm -rf cpsolver.zip
