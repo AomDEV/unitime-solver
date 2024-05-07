@@ -56,6 +56,7 @@ fi
 echo "[LOG] Downloading solver v$BUILD_VERSION"
 SOLVER_URL="https://builds.unitime.org/cpsolver-$BUILD_VERSION.zip"
 curl -s -o cpsolver.zip "$SOLVER_URL"
+echo "[LOG] Installing solver v$BUILD_VERSION"
 unzip -qq cpsolver.zip -d cpsolver/tmp
 rm -rf cpsolver.zip
 
