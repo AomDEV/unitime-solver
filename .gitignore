@@ -2,4 +2,3 @@ task/
 .env
 testset.xml
 *.jar
-*.zip
